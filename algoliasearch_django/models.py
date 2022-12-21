@@ -495,7 +495,7 @@ class AlgoliaIndex(object):
             else:
                 qs = self.model.objects.all()
 
-            paginator = Paginator(qs, batch_size)
+            paginator = Paginator(qs.order_by('pk'), batch_size)
             pages = range(1, paginator.num_pages + 1)
             for page_number in pages:
                 instances = list(paginator.page(page_number).object_list)
